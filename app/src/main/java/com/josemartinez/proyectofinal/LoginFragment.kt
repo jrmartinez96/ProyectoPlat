@@ -20,7 +20,7 @@ import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
 import com.josemartinez.proyectofinal.databinding.FragmentLoginBinding
 import android.app.Activity
-
+import android.content.Intent
 
 
 class LoginFragment : Fragment() {
@@ -60,6 +60,8 @@ class LoginFragment : Fragment() {
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful){
                             Toast.makeText(this.context, "Se ha iniciado sesión correctamente", Toast.LENGTH_LONG).show()
+                            val homeIntent = Intent(this.context, Home::class.java)
+                            startActivity(homeIntent)
                         } else {
                             Toast.makeText(this.context, "Se ha iniciado sesión incorrectamente", Toast.LENGTH_LONG).show()
                         }
