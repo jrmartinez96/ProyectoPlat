@@ -34,28 +34,41 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         (activity as AppCompatActivity).supportActionBar?.title = "Login"
         auth = FirebaseAuth.getInstance()
+
+        // Crear binding
         val binding: FragmentLoginBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
 
+        // Crear evento al hacer click en boton
         binding.crearCuentaButton.setOnClickListener(
+            // Navegar al siguiente fragment, le tenes que poner el id de la flechita del archivo de navigation
             Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_crearCuentaFragment2)
         )
 
+
+        //
         binding.loginLoginButton.setOnClickListener{
 
+            // Jala el texto de email y contraseña
             val email = binding.correoLoginEdittext.text.toString()
             val password = binding.contrasenaLoginEdittext.text.toString()
 
+            //Compara que no sean vacios
             if(email != "" && password != ""){
+                // Esconde el teclado
                 hideKeyboard(this.context!!)
-                
+
+                // Crea el cuadro de dialogo de "Cargando..."
                 val builder = AlertDialog.Builder(this.context!!)
                 val dialogView = layoutInflater.inflate(R.layout.progress_dialog, null)
                 builder.setView(dialogView)
                 builder.setCancelable(false)
 
                 val dialog = builder.create()
+
+                // Muestra el cuadro de dialogo de cargando
                 dialog.show()
 
+                // Funcion de firebase para hacer login
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful){
@@ -66,6 +79,7 @@ class LoginFragment : Fragment() {
                             Toast.makeText(this.context, "Se ha iniciado sesión incorrectamente", Toast.LENGTH_LONG).show()
                         }
 
+                        // Esoonde el cuadro de dialogo
                         dialog.hide()
                     }
             } else {
@@ -86,10 +100,12 @@ class LoginFragment : Fragment() {
         }
 
 
-
+        // Retornar esto siempre
         return binding.root
     }
 
+
+    // Funcion que esconde el teclado
     fun hideKeyboard(mContext: Context) {
         val imm = mContext
             .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
