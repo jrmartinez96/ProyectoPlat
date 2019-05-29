@@ -16,8 +16,8 @@ class MainActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        // Inicializar navigation en activity
         val navController = Navigation.findNavController(this, R.id.myNavHostFragment)
-
         NavigationUI.setupActionBarWithNavController(this, navController)
     }
 
