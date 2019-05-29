@@ -80,8 +80,8 @@ class LoginFragment : Fragment() {
                         if (task.isSuccessful){
 
                             Toast.makeText(this.context, "Se ha iniciado sesión correctamente", Toast.LENGTH_LONG).show()
-                            val homeIntent = Intent(this.context, Home::class.java)
-                            startActivity(homeIntent)
+                            //val homeIntent = Intent(this.context, Home::class.java)
+                            //startActivity(homeIntent)
                         } else {
                             Toast.makeText(this.context, "Se ha iniciado sesión incorrectamente", Toast.LENGTH_LONG).show()
                         }
