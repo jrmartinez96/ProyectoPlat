@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/navigation"
+            app:startDestination="@id/loginFragment">
+
+    <fragment android:id="@+id/loginFragment" android:name="com.josemartinez.proyectofinal.LoginFragment"
+              android:label="fragment_login" tools:layout="@layout/fragment_login">
+        <action android:id="@+id/action_loginFragment_to_crearCuentaFragment2"
+                app:destination="@id/crearCuentaFragment2" app:enterAnim="@anim/slide_in"
+                app:exitAnim="@anim/slide_out" app:popEnterAnim="@anim/slide_in_return"
+                app:popExitAnim="@anim/slide_out_return"/>
+    </fragment>
+    <fragment android:id="@+id/crearCuentaFragment2" android:name="com.josemartinez.proyectofinal.CrearCuentaFragment"
+              android:label="CrearCuentaFragment"/>
+</navigation>

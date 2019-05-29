@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <FrameLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".LoginFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:id="@+id/correo_crear_cuenta_edittext"
+                    android:layout_marginTop="130dp"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="70dp"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="70dp" app:layout_constraintHorizontal_bias="1.0"
+                    android:background="@drawable/edit_text_normal"
+                    android:hint="Ingresa tu correo electrónico..."
+                    android:padding="7dp"
+            />
+            <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="10"
+                    android:id="@+id/contrasena_crear_cuenta_edittext" android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/correo_crear_cuenta_edittext"
+                    android:layout_marginStart="70dp"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="70dp"
+                    android:background="@drawable/edit_text_normal"
+                    android:hint="Ingresa tu contraseña..."
+                    android:padding="7dp"/>
+            <Button
+                    android:text="Crear cuenta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:id="@+id/crear_crear_cuenta_button" android:layout_marginTop="30dp"
+                    app:layout_constraintTop_toBottomOf="@+id/contrasena_crear_cuenta_edittext"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp"/>
+            <View
+                    android:layout_width="0dp"
+                    android:layout_height="320dp"
+                    android:id="@+id/view"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="55dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="40dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="40dp"
+                    android:background="@drawable/layout_login_container"
+                    android:elevation="-2dp"
+            />
+            <TextView
+                    android:text="Crear cuenta"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2" android:textSize="24sp"
+                    android:textColor="@android:color/background_light"
+                    android:layout_marginBottom="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/correo_crear_cuenta_edittext"
+                    android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
+                    android:textAlignment="center"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>
+
+
