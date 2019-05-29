@@ -21,11 +21,17 @@ import com.google.firebase.auth.FirebaseAuth
 import com.josemartinez.proyectofinal.databinding.FragmentLoginBinding
 import android.app.Activity
 import android.content.Intent
+import com.google.firebase.firestore.FirebaseFirestore
+
+
+
+
 
 
 class LoginFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +40,7 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         (activity as AppCompatActivity).supportActionBar?.title = "Login"
         auth = FirebaseAuth.getInstance()
-
+        db = FirebaseFirestore.getInstance()
         // Crear binding
         val binding: FragmentLoginBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
 
@@ -72,6 +78,7 @@ class LoginFragment : Fragment() {
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful){
+
                             Toast.makeText(this.context, "Se ha iniciado sesión correctamente", Toast.LENGTH_LONG).show()
                             val homeIntent = Intent(this.context, Home::class.java)
                             startActivity(homeIntent)

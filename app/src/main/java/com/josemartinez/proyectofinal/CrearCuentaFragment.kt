@@ -19,11 +19,13 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.josemartinez.proyectofinal.databinding.FragmentCrearCuentaBinding
 
 class CrearCuentaFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +34,7 @@ class CrearCuentaFragment : Fragment() {
         // Inflate the layout for this fragment
         (activity as AppCompatActivity).supportActionBar?.title = "Crear cuenta"
         auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
         val binding: FragmentCrearCuentaBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_crear_cuenta, container, false)
 
         binding.crearCrearCuentaButton.setOnClickListener {
@@ -55,6 +58,9 @@ class CrearCuentaFragment : Fragment() {
                     binding.contrasenaCrearCuentaEdittext.text.toString()
                 ).addOnCompleteListener { task ->
                     if (task.isSuccessful){
+                        val data = HashMap<String, Any>()
+                        data.put("email", email)
+                        db.collection("users").add(data)
                         Toast.makeText(this.context, "Se creado al usuario", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(this.context, "Error al crear usuario", Toast.LENGTH_SHORT).show()
